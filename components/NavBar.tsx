@@ -13,11 +13,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import Link from "next/link";
+import {FC} from "react";
 
-const pages = ['Listings', 'AddListings', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar:FC = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -59,7 +59,7 @@ const ResponsiveAppBar = () => {
                         REEL Estate
                     </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' },marginLeft:"20" }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -88,11 +88,14 @@ const ResponsiveAppBar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center"><Link href ={`/${page}`}>{page}</Link></Typography>
+                                <MenuItem  onClick={handleCloseNavMenu}>
+                                    <ul>
+                                    <Typography textAlign="left"><Link href ="/Listings">Listings</Link></Typography>
+                                    <Typography textAlign="left"><Link href ="/AddListings">AddListings</Link></Typography>
+                                    <Typography textAlign="left"><Link href ="/Contact">Contact</Link></Typography>
+                                    </ul>
                                 </MenuItem>
-                            ))}
+
                         </Menu>
                     </Box>
                     <MapsHomeWorkIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -114,16 +117,27 @@ const ResponsiveAppBar = () => {
                     >
                         REEL Estate
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                    <Box sx={{ marginLeft: 20, flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
                             <Button
-                                key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 2, color: 'white', display: 'block', ml:5 }}
                             >
-                                <Link href ={`/${page}`}>{page}</Link>
+                                <Link href = "/Listings">Listings</Link>
                             </Button>
-                        ))}
+                        <Button
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block', ml:5 }}
+                        >
+                            <Link href = "/Listings">Add Listings</Link>
+                        </Button>
+                        <Button
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block', ml:5 }}
+                        >
+                            <Link href = "/Listings">Contact</Link>
+                        </Button>
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
